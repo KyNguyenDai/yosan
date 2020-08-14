@@ -1,11 +1,42 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, TextInput } from 'react-native';
+import UselessTextInput from "./src/components/UselessTextInput";
+import CusButton from "./src/components/CusButton";
+import DisplayCom from "./src/components/DisplayCom";
+import { useState, useEffect } from 'react';
 
 export default function App() {
+  const [total, setTotal] = useState(0);
   return (
     <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
+      <View style={styles.display}>
+        <DisplayCom
+          _total={total}
+        />
+      </View>
+      <View style={styles.form}>
+        <UselessTextInput
+          _name="Name"
+          _number_f={false}
+          _placeHolder="Enter name..."
+
+        />
+        <UselessTextInput
+          _name="Price"
+          _number_f={true}
+          _placeHolder={'Enter price...'}
+        />
+      </View>
+      <View style={styles.submitBtn}>
+        <CusButton
+          _btnName={"Submit"}
+          _submitFunc={() => setTotal(1)}
+        />
+      </View>
+
+
+
       <StatusBar style="auto" />
     </View>
   );
@@ -18,4 +49,24 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  display: {
+    backgroundColor: '#FFDFD3',
+    flex: 3,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  form: {
+    flex: 2,
+    backgroundColor: '#FEC8D8',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  submitBtn: {
+    flex: 1,
+    backgroundColor: '#E2EEC2',
+    alignItems: 'center',
+    justifyContent: 'center',
+  }
 });
+
+
