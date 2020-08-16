@@ -8,6 +8,17 @@ import { useState, useEffect } from 'react';
 
 export default function App() {
   const [total, setTotal] = useState(0);
+  const [name, setName] = useState('');
+  const [price, setPrice] = useState<number>(0);
+  const submitFunc = () => {
+    console.log('---Total---', price + 1)
+  }
+
+  const _f = (val: number) => {
+    console.log('---sdfsd---', typeof val)
+    setPrice(val)
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.display}>
@@ -20,23 +31,22 @@ export default function App() {
           _name="Name"
           _number_f={false}
           _placeHolder="Enter name..."
+          getValue={(val) => setName(val)}
 
         />
         <UselessTextInput
           _name="Price"
           _number_f={true}
           _placeHolder={'Enter price...'}
+          getValue={(val: number) => _f(val)}
         />
       </View>
       <View style={styles.submitBtn}>
         <CusButton
           _btnName={"Submit"}
-          _submitFunc={() => setTotal(1)}
+          _submitFunc={() => submitFunc()}
         />
       </View>
-
-
-
       <StatusBar style="auto" />
     </View>
   );
