@@ -4,20 +4,26 @@ import { StyleSheet, Text, View, TouchableOpacity, TextInput } from 'react-nativ
 import UselessTextInput from "./src/components/UselessTextInput";
 import CusButton from "./src/components/CusButton";
 import DisplayCom from "./src/components/DisplayCom";
+import CusCheckBox from "./src/components/CusCheckBox";
 import { useState, useEffect } from 'react';
 
 export default function App() {
-  const [total, setTotal] = useState(0);
+  const [total, setTotal] = useState<number>(0);
   const [name, setName] = useState('');
   const [price, setPrice] = useState<number>(0);
+  const [isTax10, setTax] = useState(false);
+
   const submitFunc = () => {
-    console.log('---Total---', price + 1)
+    const _taxValue = isTax10 ? 0.1 : 0.08;
+    const _total = total + (price + price * _taxValue);
+    setTotal(_total);
   }
 
-  const _f = (val: number) => {
-    console.log('---sdfsd---', typeof val)
-    setPrice(val)
-  }
+
+  useEffect(() => {
+    console.log("--IS TAX 10--", isTax10)
+  }, [isTax10])
+
 
   return (
     <View style={styles.container}>
@@ -38,7 +44,13 @@ export default function App() {
           _name="Price"
           _number_f={true}
           _placeHolder={'Enter price...'}
-          getValue={(val: number) => _f(val)}
+          getValue={(val: number) => setPrice(val * 1)}
+        />
+
+      </View>
+      <View style={{ flexDirection: "row", zIndex: 2, height: 20 }}>
+        <CusCheckBox
+          getStatus={(val) => setTax(val)}
         />
       </View>
       <View style={styles.submitBtn}>
@@ -55,25 +67,21 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
   display: {
-    backgroundColor: '#FFDFD3',
     flex: 3,
     alignItems: 'center',
     justifyContent: 'center',
   },
   form: {
     flex: 2,
-    backgroundColor: '#FEC8D8',
     alignItems: 'center',
     justifyContent: 'center',
   },
   submitBtn: {
     flex: 1,
-    backgroundColor: '#E2EEC2',
     alignItems: 'center',
     justifyContent: 'center',
   }
