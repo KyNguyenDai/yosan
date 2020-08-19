@@ -5,7 +5,7 @@ type Props = {
     getStatus(val: any): any
 }
 
-const CusCheckBox = ({ getStatus }: Props) => {
+const CusSwitch = ({ getStatus }: Props) => {
     const [isEnabled, setIsEnabled] = useState(false);
     const toggleSwitch = () => {
         setIsEnabled(previousState => !previousState);
@@ -41,4 +41,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default CusCheckBox;
+export default CusSwitch;

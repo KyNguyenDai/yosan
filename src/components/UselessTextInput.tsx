@@ -3,13 +3,12 @@ import { TextInput, View, Text } from 'react-native';
 import { useState, useEffect } from 'react';
 
 type Props = {
-    _name: string,
     _number_f: boolean,
     _placeHolder: string,
     getValue(val: any): any
 }
 
-const UselessTextInput = ({ _name, _number_f, _placeHolder, getValue }: Props) => {
+const UselessTextInput = ({ _number_f, _placeHolder, getValue }: Props) => {
     const [value, onChangeText] = useState('');
     const handleInput = (text: any) => {
         onChangeText(text);
@@ -19,8 +18,7 @@ const UselessTextInput = ({ _name, _number_f, _placeHolder, getValue }: Props) =
         getValue(value);
     })
     return (
-        <View style={{ width: "100%", height: "100%" }}>
-            <Text>{_name}</Text>
+        <View style={{}}>
             <TextInput
                 style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
                 onChangeText={(text: any) => handleInput(text)}
@@ -29,7 +27,7 @@ const UselessTextInput = ({ _name, _number_f, _placeHolder, getValue }: Props) =
                 clearTextOnFocus={true}
                 keyboardType={_number_f ? 'numeric' : 'default'}
             />
-        </View>
+        </View >
 
     );
 }

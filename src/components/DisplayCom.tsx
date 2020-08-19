@@ -1,37 +1,29 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-
+import { StyleSheet, Text, TouchableOpacity, View, ListView } from "react-native";
+import ListItem from "./ListItem"
 type Props = {
-    _total: number
+    _total: number,
+    _dataSource: any
 }
 
-const DisplayCom = ({ _total }: Props) => {
-    const [count, setCount] = useState(0);
-    const onPress = () => setCount(prevCount => prevCount + 1);
+const DisplayCom = ({ _total, _dataSource }: Props) => {
 
     return (
         <View style={styles.container}>
+
+            <ListItem
+                data={_dataSource}
+            />
             <Text>Total:</Text>
             <Text>{_total}</Text>
+
+
         </View>
     );
 };
 
 const styles = StyleSheet.create({
     container: {
-        width: "100%",
-        height: "100%",
-        justifyContent: "center",
-        paddingHorizontal: 10
-    },
-    button: {
-        alignItems: "center",
-        backgroundColor: "#DDDDDD",
-        padding: 10
-    },
-    countContainer: {
-        alignItems: "center",
-        padding: 10
     }
 });
 
