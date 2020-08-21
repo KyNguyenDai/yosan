@@ -7,23 +7,18 @@ type Props = {
 
 const ListItem = ({ data }: Props) => {
     useEffect(() => {
-        console.log("--data--", data)
     })
 
     return (
         <View style={styles.container}>
             {data && data.length > 0 &&
                 <FlatList
+                    inverted
                     data={data}
                     renderItem={({ item, index, separators }) => (
-                        <TouchableHighlight
-                            key={item.key}
-                            onShowUnderlay={separators.highlight}
-                            onHideUnderlay={separators.unhighlight}>
-                            <View style={{ backgroundColor: 'white' }}>
-                                <Text>{`${item.name}:${item.price}`}</Text>
-                            </View>
-                        </TouchableHighlight>
+                        <View style={styles.item}>
+                            <Text>{`${item.name}:${item.price}`}</Text>
+                        </View>
                     )}
                 />
             }
@@ -34,6 +29,15 @@ const ListItem = ({ data }: Props) => {
 
 const styles = StyleSheet.create({
     container: {
+
+    },
+    item: {
+        alignSelf: 'flex-start',
+        backgroundColor: '#f9c2ff',
+        padding: 10,
+        marginVertical: 8,
+        marginHorizontal: 16,
+        borderRadius: 5
     }
 });
 

@@ -13,7 +13,7 @@ const CusButton = ({ _btnName, _submitFunc }: Props) => {
                 style={styles.button}
                 onPress={() => _submitFunc()}
             >
-                <Text>{_btnName}</Text>
+                <Text style={styles.btnText}>{_btnName}</Text>
             </TouchableOpacity>
         </View>
     );
@@ -21,14 +21,26 @@ const CusButton = ({ _btnName, _submitFunc }: Props) => {
 
 const styles = StyleSheet.create({
     container: {
+        width: '100%',
+        height: 60,
+        alignItems: "center",
         justifyContent: "center",
+        paddingVertical: 8,
+        marginBottom: 10
     },
     button: {
+        width: '100%',
+        height: '100%',
         alignItems: "center",
-        backgroundColor: "#DDDDDD",
+        justifyContent: 'center',
+        backgroundColor: "#87DCC0",
+        borderRadius: 5
     },
     countContainer: {
         alignItems: "center",
+    },
+    btnText: {
+        fontSize: 14
     }
 });
 

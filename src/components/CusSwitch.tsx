@@ -14,12 +14,11 @@ const CusSwitch = ({ getStatus }: Props) => {
 
     useEffect(() => {
         getStatus(isEnabled)
-        console.log("---IS ENABLE---", isEnabled);
     }, [isEnabled])
 
     return (
         <View style={styles.container}>
-            <Text>{"8%"}</Text>
+            <Text style={styles.taxStyle}>{"8%"}</Text>
             <Switch
                 trackColor={{ false: "green", true: "yellow" }}
                 thumbColor={isEnabled ? "#f5dd4b" : "yellow"}
@@ -27,7 +26,7 @@ const CusSwitch = ({ getStatus }: Props) => {
                 onValueChange={toggleSwitch}
                 value={isEnabled}
             />
-            <Text>{"10%"}</Text>
+            <Text style={styles.taxStyle}>{"10%"}</Text>
         </View>
     );
 }
@@ -38,6 +37,9 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: "center",
         justifyContent: "center"
+    },
+    taxStyle: {
+        fontSize: 13
     }
 });
 
